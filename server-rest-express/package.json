@@ -1,0 +1,51 @@
+{
+    "name": "employee-erp-backend",
+    "version": "1.0.0",
+    "description": "Erp system for employees and employer",
+    "main": "index.js",
+    "scripts": {
+        "dev": "nodemon ./src/bin/server.js",
+        "test": "NODE_ENV=test jest --verbose --runInBand --detectOpenHandles",
+        "db-setup-test": "NODE_ENV=test npm run db-drop && NODE_ENV=test npm run db-create && NODE_ENV=test npm run db-migrate",
+        "db-migrate": "npx sequelize-cli db:migrate",
+        "db-create": "npx sequelize-cli db:create",
+        "db-seed": "npx sequelize-cli db:seed:all",
+        "db-drop": "npx sequelize-cli db:drop",
+        "db-recreate": "npx sequelize-cli db:drop && npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all",
+        "queues": "NODE_ENV=development node ./src/bin/queues.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "faker": "~4.1.0",
+        "jest": "~26.4.2",
+        "nodemon": "~2.0.4",
+        "sequelize-cli": "~6.2.0",
+        "supertest": "~4.0.2",
+        "supertest-session": "~4.1.0"
+    },
+    "dependencies": {
+        "@sendgrid/mail": "~7.3.0",
+        "amqplib": "~0.6.0",
+        "axios": "~0.19.2",
+        "bcryptjs": "~2.4.3",
+        "body-parser": "~1.19.0",
+        "connect-history-api-fallback": "~1.6.0",
+        "connect-redis": "~5.0.0",
+        "cookie-parser": "~1.4.5",
+        "cors": "~2.8.5",
+        "dotenv": "~8.2.0",
+        "express": "~4.17.1",
+        "express-session": "~1.17.1",
+        "express-validator": "~6.6.1",
+        "helmet": "~4.0.0",
+        "http-status-codes": "~1.4.0",
+        "moment": "~2.27.0",
+        "mysql2": "~2.1.0",
+        "node-dependency-injection": "~2.6.7",
+        "nodemailer": "~6.4.14",
+        "redis-sessions": "~3.0.0",
+        "sequelize": "~6.3.4",
+        "uuid": "~3.4.0"
+    }
+}

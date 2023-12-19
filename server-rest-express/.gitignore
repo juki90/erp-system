@@ -1,0 +1,8 @@
+**/.env*
+!**/.env.example
+/node_modules
+public/*
+!/**/.gitkeep
+!/docker/**
+package-lock.json
+

@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.react-datepicker__navigation--years {
+    background: none;
+    line-height: 1.7rem;
+    text-align: center;
+    cursor: pointer;
+    padding: 0;
+    border: 0.45rem solid transparent;
+    z-index: 1;
+    height: 10px;
+    width: 10px;
+    text-indent: -999em;
+    overflow: hidden;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.react-datepicker__navigation--years.react-datepicker__navigation--years-upcoming {
+    top: -4px;
+    border-bottom-color: #ccc;
+}
+
+.react-datepicker__navigation--years.react-datepicker__navigation--years-previous {
+    top: 4px;
+    border-top-color: #ccc;
+}
+
+.ReactVirtualized__Table__Grid,
+.ReactVirtualized__Table__headerRow {
+    width: 100% !important;
+}
+
+.ReactVirtualized__Table__Grid {
+    overflow-y: scroll !important;
+}
+
+.ReactVirtualized__Table__headerRow {
+    background-color: rgb(107, 114, 128);
+    padding-right: 30px !important;
+}
+
+.ReactVirtualized__Table__headerColumn {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+}
+
+.react-datepicker-popper {
+    z-index: 99999 !important;
+}
+
+.react-datepicker {
+    box-shadow: 0 0 30px 3px rgba(0, 0, 0, 0.3);
+}
+
+.react-datepicker-wrapper {
+    width: 100%;
+}

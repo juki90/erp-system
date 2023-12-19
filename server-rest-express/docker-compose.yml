@@ -1,0 +1,78 @@
+version: '3'
+
+volumes:
+    mysql.data:
+    mysql-test.data:
+
+services:
+    mysql:
+        platform: linux/x86_64
+        image: mysql:5.7
+        container_name: mysql.erpemployee.docker
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: erpemployee
+            MYSQL_USER: erpemployee
+            MYSQL_PASSWORD: erpemployee
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+        volumes:
+            - mysql.data:/var/lib/mysql
+        ports:
+            - 127.0.0.1:9999:3306
+        networks:
+            - global
+
+    mysql-test:
+        platform: linux/x86_64
+        image: mysql:5.7
+        container_name: mysql-test.erpemployee.docker
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: erpemployeetest
+            MYSQL_USER: erpemployeetest
+            MYSQL_PASSWORD: erpemployeetest
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+        volumes:
+            - mysql-test.data:/var/lib/mysql
+        ports:
+            - 127.0.0.1:9998:3306
+        networks:
+            - global
+
+    redis:
+        image: redis:latest
+        container_name: redis.erpemployee.docker
+        restart: unless-stopped
+        networks:
+            - global
+        ports:
+            - 127.0.0.1:6379:6379
+
+    rabbitmq:
+        image: rabbitmq:management
+        container_name: rabbitmq.erpemployee.docker
+        restart: unless-stopped
+        ports:
+            - 127.0.0.1:5672:5672
+            - 127.0.0.1:15672:15672
+        environment:
+            RABBITMQ_DEFAULT_USER: 'guest'
+            RABBITMQ_DEFAULT_PASS: 'guest'
+        networks:
+            - global
+
+    mailcatcher:
+        image: schickling/mailcatcher
+        container_name: mailcatcher.erpemployee.docker
+        restart: unless-stopped
+        ports:
+            - 127.0.0.1:1025:1025
+            - 127.0.0.1:1080:1080
+        networks:
+            - global
+
+networks:
+    global:
+        external: false
